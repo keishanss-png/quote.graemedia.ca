@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GRAE Media — Invoice</title>
+<meta name="color-scheme" content="light">
+<style>
+  html { background: #ffffff; }
+  @media print {
+    body { margin: 0; }
+    .no-print { display: none; }
+    @page { margin: 0.6in; }
+  }
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: #1a1a1a;
+    background: #ffffff;
+    max-width: 720px;
+    margin: 40px auto;
+    padding: 0 24px;
+    line-height: 1.5;
+  }
+  .no-print {
+    background: #fff8db;
+    border: 1px solid #e0d28a;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 32px;
+    font-size: 13px;
+    color: #665c1e;
+  }
+  .no-print code { background: #f0e8b8; padding: 1px 5px; border-radius: 3px; }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 3px solid #111;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+  }
+  .brand { font-size: 22px; font-weight: 700; letter-spacing: 0.05em; }
+  .brand-sub { font-size: 12px; color: #666; margin-top: 4px; }
+  .invoice-title { text-align: right; }
+  .invoice-title h1 { font-size: 24px; margin: 0; letter-spacing: 0.08em; color: #444; }
+  .meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .meta-grid h3 {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #888;
+    margin: 0 0 6px;
+  }
+  .meta-grid p { margin: 0 0 2px; font-size: 14px; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+  th {
+    text-align: left;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #888;
+    border-bottom: 2px solid #111;
+    padding: 8px 4px;
+  }
+  th.amount, td.amount { text-align: right; }
+  td { padding: 14px 4px; border-bottom: 1px solid #ddd; font-size: 14px; vertical-align: top; }
+  .item-desc-sub { font-size: 12px; color: #888; margin-top: 3px; }
+  .totals { display: flex; justify-content: flex-end; margin-bottom: 32px; }
+  .totals table { width: 260px; margin-bottom: 0; }
+  .totals td { border-bottom: none; padding: 6px 4px; }
+  .totals .grand-total td {
+    border-top: 2px solid #111;
+    font-weight: 700;
+    font-size: 16px;
+    padding-top: 12px;
+  }
+  .payment-box {
+    background: #f7f7f7;
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin-bottom: 28px;
+  }
+  .payment-box h3 {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #888;
+    margin: 0 0 8px;
+  }
+  .payment-box p { margin: 0 0 4px; font-size: 14px; }
+  footer { font-size: 12px; color: #999; border-top: 1px solid #ddd; padding-top: 16px; }
+</style>
+</head>
+<body>
+
+  <div class="no-print">
+    <strong>Template — not for sending as-is.</strong> Fill in every <code>[bracketed]</code> field before printing. To generate the second installment invoice for the same client, duplicate this file, change the Invoice #, Date, Description line to "Installment 2 of 2," and the Amount. To save as PDF: File → Print → Destination: Save as PDF.
+    <br><br>
+    <strong>Before charging HST:</strong> you only need to (and legally should only) charge HST if you're registered for a GST/HST number. Registration is mandatory once your revenue passes $30,000/year (the "small supplier" threshold) — below that, it's optional. If you aren't registered yet, delete the HST line and the registration number field below rather than sending a tax line with no real number behind it.
+  </div>
+
+  <header>
+    <div>
+      <div class="brand">GRAE MEDIA</div>
+      <div class="brand-sub">
+        hello@quote-graemedia.ca<br>
+        (519) 719-7657 · London, ON<br>
+        GST/HST #: [XXXXXXXXX RT0001]
+      </div>
+    </div>
+    <div class="invoice-title">
+      <h1>INVOICE</h1>
+      <p style="margin:6px 0 0; font-size:13px; color:#666;">Invoice #: [GM-0001]</p>
+      <p style="margin:2px 0 0; font-size:13px; color:#666;">Date: [Month DD, YYYY]</p>
+    </div>
+  </header>
+
+  <div class="meta-grid">
+    <div>
+      <h3>Bill To</h3>
+      <p><strong>[Client Full Name]</strong></p>
+      <p>[Business Name]</p>
+      <p>[Client Email]</p>
+    </div>
+    <div>
+      <h3>Reference</h3>
+      <p>Service Agreement Ref: [GM-XXXXXXXX]</p>
+      <p>Agreement Signed: [Month DD, YYYY]</p>
+      <p>Due: [Month DD, YYYY]</p>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th class="amount">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          [Pre-Built Modernization / Package Name] — Website Development
+          <div class="item-desc-sub">Installment 1 of 2 — due before work begins</div>
+        </td>
+        <td class="amount">$750.00</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="totals">
+    <table>
+      <tr>
+        <td>Subtotal</td>
+        <td class="amount">$750.00</td>
+      </tr>
+      <tr>
+        <td>HST (13%, Ontario)</td>
+        <td class="amount">$97.50</td>
+      </tr>
+      <tr class="grand-total">
+        <td>Total Due</td>
+        <td class="amount">$847.50 CAD</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="payment-box">
+    <h3>Payment Instructions</h3>
+    <p><strong>e-Transfer to: keishanss@gmail.com</strong></p>
+    <p>Please include the Invoice # in the e-Transfer message so it can be matched to your file.</p>
+  </div>
+
+  <footer>
+    This invoice is issued under the Website Services Agreement (Ref: [GM-XXXXXXXX]) signed by both parties. Work on Installment 1 begins once payment is confirmed; Full Access is granted only after Installment 2 is received in full. Questions: hello@quote-graemedia.ca.
+  </footer>
+
+</body>
+</html>
